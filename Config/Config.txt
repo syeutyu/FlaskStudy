@@ -1,0 +1,64 @@
+FLASK 내부의 설정 값
+
+DEBUG
+	디버그 모드를 활성화/비활성화 함
+
+TESTING
+	테스팅 모드를 활성화/비활성화 함
+
+PROPAGATE_EXCEPTIONS
+	명시적으로 예외를 전파하는 것에 대한 활성화 혹은 비활성화 함. 이 값을 특별히 설정을 안하거나 명시적으로 None 으로 설정했을 경우라도 TESTING 혹은 DEBUG 가 true 라면 이 값 역시 true 가 된다.
+
+PRESERVE_CONTEXT_ON_EXCEPTION
+	어플리케이션이 디버그모드에 있는 경우 요청 컨텍스트는 디버거에서 데이터를 확인 하기 위해 예외를 발생시키지 않는다. 이 설정을 이 키값을 설정하여 이 설정을 비활성화 할 수 있다. 또한 이 설정은 제품화된(하지만 매우 위험 할 수 있는) 어플리케이션을 디버깅하기위해 유리 할수 있으며 디버거 실행을 위해 강제로 사용하도록 설정하고 싶을 때 사용가능하다.
+
+SECRET_KEY
+	비밀키
+
+SESSION_COOKIE_NAME
+	세션 쿠키의 이름
+
+SESSION_COOKIE_DOMAIN
+	세션 쿠키에 대한 도메인. 이값이 설정되어 있지 않은 경우 쿠키는 SERVER_NAME 의 모든 하위 도메인에 대하여 유효하다.
+
+SESSION_COOKIE_PATH
+	세션 쿠키에 대한 경로를 설정한다. 이값이 설정되어 있지 않은 경우 쿠키는 '/' 로 설정되어 있지 않은 모든 APPLICATION_ROOT 에 대해서 유효하다
+
+SESSION_COOKIE_HTTPONLY
+	쿠키가 httponly 플래그를 설정해야만 하도록 통제한다. 기본값은 True 이다.
+
+SESSION_COOKIE_SECURE
+	쿠키가 secure 플래그를 설정해야만 하도록 통제한다. 기본값은 False 이다.
+
+PERMANENT_SESSION_LIFETIME
+	datetime.timedelta 를 이용하여 영구 세션 유지 시간을 설정한다. Flask 0.8버전부터 integer 타입의 초단위로 설정이 가능하다.
+
+USE_X_SENDFILE
+	x-sendfile 기능을 활성화/비활성화 함
+
+LOGGER_NAME
+	로거의 이름을 설정함
+
+SERVER_NAME
+	서버의 이름과 포트 번호를 뜻한다. 서브도메인을 지원하기 위해 요구된다. (예: 'myapp.dev:5000') 이 값을 “localhost” 로 설정하는 것은 서브 도메인을 지원하지 않는 것에 그리 도움이 되지는 않는다는 것을 주의하자. 또한 SERVER_NAME 를 설정하는 것은 기본적으로 요청 컨텍스트 없이 어플리케이션 컨텍스트를 통해 URL을 생성 할 수 있도록 해준다.
+
+APPLICATION_ROOT
+	어플리케이션이 전체 도메인을 사용하지 않거나 서브도메인을 사용하지 않는 경우 이 값은 어플리케이션이 어느 경로에서 실행되기 위해 설정되어 있는지 결정한다. 이값은 세션 쿠키에서 경로 값으로 사용된다 만약 도메인이 사용되는 경우 이 값은 None 이다.
+
+MAX_CONTENT_LENGTH
+	만약 이 변수 값이 바이트수로 설정되면, 들어오는 요청에 대해서 이 값보다 더 큰 길이의 컨텐트일 경우 413 상태 코드를 리턴한다.
+
+SEND_FILE_MAX_AGE_DEFAULT
+	send_static_file() (기본 정적파일 핸들러) 와 send_file() 에서 사용하는 캐시 제어에 대한 최대 시간은 초단위로 정한다. 파일 단위로 사용되는 이 값을 덮어쓰기 위해서는 Flask 나 Blueprint 를 개별적으로 후킹하여 get_send_file_max_age() 를 사용한다. 기본값은 43200초 이다(12 시간).
+
+TRAP_HTTP_EXCEPTIONS
+	만약 이 값이 True 로 셋팅되어 있다면 Flask는 HTTP 익셉션 처리를 위한 에러 핸들러를 실행 하지 않는다. 하지만, 대신에 익셉션 스택을 발생시킨다. 이렇게 하면 디버깅이 어려운 상황에서 HTTP 에러가 발견되는 곳을 찾을 때 유용하다.
+
+TRAP_BAD_REQUEST_ERRORS
+	잘못된 요청(BadRequest)에 대한 주요 익셉션 에러들은 Werkzeug의 내부 데이터 구조에 의해 다루어 진다. 마찬가지로 많은 작업들이 잘못된 요청에 의해 암시적으로 일관성부분에서 실패할 수 있다. 이 플래그는 왜 실패가 발생했는지 디버깅 상황에서 명백하게 알고 싶을 때 좋다. 만약 True 로 설정 되어 있다면, 주기적인 추적값을 얻을 수 있을 것이다.
+
+PREFERRED_URL_SCHEME
+	사용가능한 URL 스키마가 존재하지 않을 경우 해당 URL에 대한 스키마가 반드시 필요하기 때문에 기본 URL 스키마가 필요하다. 기본값은 http.
+
+JSON_AS_ASCII
+	Flask 직렬화 객체는 기본으로 아스키로 인코딩된 JSON을 사용한다. 만약 이 값이 False 로 설정 되어 있다면, Flask는 ASCII로 인코딩하지 않을 것이며 현재의 출력 문자열을 유니코드 문자열로 리턴할 것이다. jsonify 는 자동으로 ``utf-8``로 인코딩을 한 후 해당 인스터스로 전송한다.
