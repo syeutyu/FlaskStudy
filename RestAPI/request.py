@@ -1,4 +1,4 @@
-from flask import Flask,request
+from flask import Flask,request,jsonify
 import json
 
 app = Flask(__name__)
@@ -17,4 +17,10 @@ def getJson():
      print(type(data))
      return data
 
-app.run(debug=True)
+@app.route("/datasend/",methods=["GET"])
+def androidTest():
+    a = request.args["data"]
+    print("들어온값 %d",a)
+    return jsonify({'s':'1000'})
+
+app.run(host='0.0.0.0')
