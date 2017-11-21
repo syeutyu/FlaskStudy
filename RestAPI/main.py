@@ -1,19 +1,18 @@
-from flask import Flask,request
-from flask_restful import Resource, Api
+from flask import Flask,Blueprint
+from flask_restful import  Api
+from RestAPI.testClass import CreateUser
+
+blueprint =Blueprint('createUser',__name__)
+api = Api(blueprint) # bluePrint 객체 파라미터 넣어줌
+api.add_resource(CreateUser, '/user')
 
 app = Flask(__name__)
-api = Api(app)
+app.register_blueprint(blueprint)
 
-class CreateUser(Resource):
-    def get(self):
-        print('실행합니당')
-        data = request.args["data"]
-        return {'status': data}
-
-api.add_resource(CreateUser, '/user')
 
 if __name__ == '__main__':
     """
         :rtype: Flask
         """
+
     app.run(debug=True)
