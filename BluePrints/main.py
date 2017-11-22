@@ -1,10 +1,10 @@
 from flask import Flask
-from BluePrints import publie
+#from BluePrints import publie
 
 app = Flask(__name__)
 
 #
-app.register_blueprint(publie.blueprint, url_prefix='/test')
+#app.register_blueprint(publie.blueprint, url_prefix='/test')
 
 
 @app.route('/')
