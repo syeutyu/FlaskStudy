@@ -1,4 +1,4 @@
 from mongo import *
 
-class testSchema(Document):
+class mongoengine(Document):
     test_num = StringField(default='test')

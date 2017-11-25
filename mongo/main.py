@@ -1,4 +1,4 @@
-from mongo.schema import testSchema
+from mongo.schema import mongoengine
 from flask import Flask,request
 
 app = Flask(__name__)
@@ -7,10 +7,10 @@ app = Flask(__name__)
 def post():
     id = request.args.get('id')
     print(id+'들어옴')
-    test = testSchema(test_num=id)
+    test = mongoengine(test_num=id)
     print(test)
     test.save()
-    return '성공'
+    return ''
 
 if __name__ =='__main__':
     app.run(debug=True)
