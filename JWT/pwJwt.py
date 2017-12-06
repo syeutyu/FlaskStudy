@@ -13,7 +13,7 @@ def post():
     test = jwt.decode(staticValue, 'secret key', algorithms='HS256')
     print(test)
     return jsonify({
-        'msg':test # {request값 : 'payload'} 
+        'msg':test # {request값 : 'payload'}
     })
 
 app.run(debug=True)
