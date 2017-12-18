@@ -1,4 +1,4 @@
 from mongoengine import *
 
 def connection_db(app):
-    connect(db=app.config['DB'],host=app.config['HOST'],port=app.config['PORT'])
+    connect(db='login',host='localhost',port=27017)

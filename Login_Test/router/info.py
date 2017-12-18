@@ -5,10 +5,12 @@ from flask import jsonify
 
 class SignUp(Resource):
     def get(self):
-        return jsonify({'msg':'this is get'},200)
+        response = jsonify({'msg': 'this is get'})
+        response.status_code = 200
+        return response
 
     def post(self):
-        User(id=request.form.get('id'),password=request.form.get('password'))
+        User(user_id=request.form.get('id'),password=request.form.get('password')).save()
         response = jsonify({'msg':'success create'})
         response.status_code = 201
         return response

@@ -1,5 +1,7 @@
-from mongo import *
+from mongoengine import *
+
+connect('Login')
 
 class User(Document):
-    id = StringField(required=True,unique=True)
-    password = StringField(required=True,unique=True)
+    user_id = StringField(unique=True)
+    password = StringField()
