@@ -1,0 +1,6 @@
+{
+  "DB" : "Login",
+  "HOST":"localhost",
+  "PORT":27017,
+  "DEBUG":"TRUE"
+}
