@@ -8,5 +8,6 @@ class routerInjector(object):
 
     def setRouter(self):
         api = Api(self.app)
-        api.add_resource(SignUp,'/create')
+        api.add_resource(SignUp,'/signup')
+        api.add_resource(Singin,'/signin')
 

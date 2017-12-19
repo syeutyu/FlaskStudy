@@ -2,5 +2,6 @@
   "DB" : "Login",
   "HOST":"localhost",
   "PORT": 27017,
-  "DEBUG":"TRUE"
+  "DEBUG":"TRUE",
+  "JWT_SECRET_KEY" : "secret key"
 }
