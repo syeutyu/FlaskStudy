@@ -28,3 +28,7 @@ class Singin(Resource):
         else :
             return Response('',400)
 
+class PostUser(Resource):
+    @jwt_required
+    @jwt_refresh_token_required
+    def post(self):
